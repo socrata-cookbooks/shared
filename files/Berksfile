@@ -1,0 +1,34 @@
+# frozen_string_literal: true
+
+require 'chef/cookbook/metadata'
+
+md = Chef::Cookbook::Metadata.new
+md.from_file(File.expand_path('metadata.rb', __dir__))
+
+if md.license.downcase.include?('rights')
+  source artifactory: 'https://repo.socrata.com/artifactory/api/chef/chef'
+else
+  source 'https://supermarket.chef.io'
+end
+
+metadata
+
+specs = File.expand_path('spec/support/cookbooks', __dir__)
+if File.exist?(specs)
+  group :unit do
+    Dir.entries(specs).each do |d|
+      next if %w[. ..].include?(d)
+      cookbook d, path: File.join(specs, d)
+    end
+  end
+end
+
+fixtures = File.expand_path('test/fixtures/cookbooks', __dir__)
+if File.exist?(fixtures)
+  group :integration do
+    Dir.entries(fixtures).each do |d|
+      next if %w[. ..].include?(d)
+      cookbook d, path: File.join(fixtures, d)
+    end
+  end
+end

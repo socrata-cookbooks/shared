@@ -16,7 +16,22 @@ require 'uri'
 
 uri = URI('https://raw.githubusercontent.com/socrata-cookbooks/shared/' \
           'master/files/Gemfile')
-instance_eval Net::HTTP.get(uri)
+instance_eval(Net::HTTP.get(uri))
+```
+
+***Berkshelf***
+
+The included `Berksfile` will automatically point at the public Supermarket or our internal Artifactory instance depending on the cookbook's license. It will include any test wrapper cookbooks found in `spec/support/cookbooks/` (for ChefSpec) or `test/fixtures/cookbooks/` (for Test Kitchen). It can be imported by adding this to a cookbook's `Berksfile`:
+
+```
+# frozen_string_literal: true
+
+require 'net/http'
+require 'uri'
+
+uri = URI('https://raw.githubusercontent.com/socrata-cookbooks/shared/' \
+          'master/files/Berksfile')
+instance_eval(Net::HTTP.get(uri))
 ```
 
 ***Delivery***
