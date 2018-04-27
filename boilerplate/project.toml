@@ -1,6 +1,6 @@
 [local_phases]
 unit = "rspec spec/"
-lint = 'cookstyle --display-cop-names --extra-details && rubocop'
+lint = "cookstyle --display-cop-names --extra-details"
 syntax = "foodcritic ."
 provision = "echo skipping"
 deploy = "echo skipping"
