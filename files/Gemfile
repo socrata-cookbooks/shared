@@ -7,3 +7,4 @@ end
 source 'https://rubygems.org'
 
 gem 'coveralls'
+gem 'rubocop', '>= 0.55'
