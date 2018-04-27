@@ -28,3 +28,13 @@ imported into a cookbook by adding this to its `.delivery/project.toml`:
 ```
 remote_file = "https://raw.githubusercontent.com/socrata-cookbooks/shared/master/files/project.toml"
 ```
+
+***RuboCop***
+
+The included RuboCop config can be imported into another cookbook by adding
+this to its `.rubocop.yml`:
+
+```
+inherit_from:
+  - https://raw.githubusercontent.com/socrata-cookbooks/shared/master/files/.rubocop.yml
+```

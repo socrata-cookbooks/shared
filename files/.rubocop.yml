@@ -1,0 +1,4 @@
+# ChefSpec tests frequently include lengthy `describe` blocks.
+Metrics/BlockLength:
+  Exclude:
+    - spec/**/*
