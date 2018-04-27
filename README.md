@@ -53,8 +53,23 @@ inherit_from:
 
 ***Documentation***
 
-Markdown has no facility to include the content of another Markdown file. To reference the included testing documentation, add the following to your cookbook's `TESTING.md`:
+Markdown has no facility to include the content of another Markdown file. The included doc files can only be referenced as follows:
+
+
+`TESTING.md`:
 
 ```
-Please refer to the shared testing doc [here](https://github.com/socrata-cookbooks/blob/master/shared/TESTING.MD).
+Please refer to the shared testing doc [here](https://github.com/socrata-cookbooks/shared/blob/master/files/TESTING.md).
+```
+
+`CONTRIBUTING.md`:
+
+```
+Please refer to the shared contributing doc [here](https://github.com/socrata-cookbooks/shared/blob/master/files/CONTRIBUTING.md).
+```
+
+`CODE_OF_CONDUCT.md`:
+
+```
+Please refer to the shared code of conduct [here](https://github.com/socrata-cookbooks/shared/blob/master/files/CODE_OF_CONDUCT.md).
 ```
