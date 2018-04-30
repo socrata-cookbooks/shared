@@ -24,6 +24,10 @@ yaml = {
   suites: []
 }
 
+if File.exist?(File.expand_path('test/fixtures/data_bags', __dir__))
+  yaml[:provisioner][:data_bags_path] = 'test/fixtures/data_bags'
+end
+
 md = Chef::Cookbook::Metadata.new
 md.from_file(File.expand_path('metadata.rb', __dir__))
 platforms = md.platforms.keys
