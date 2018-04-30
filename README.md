@@ -56,15 +56,25 @@ inherit_from:
 Test Kitchen performs Erb parsing before trying to interpret its YAML config, so the included Kitchen config can be imported by putting this in your `.kitchen.yml`:
 
 ```
-<% require 'net/http' %>
-<%= instance_eval(File.read('https://raw.githubusercontent.com/socrata-cookbooks/shared/master/files/.kitchen.rb')) %>
+<%
+require 'net/http'
+require 'uri'
+
+uri = URI('https://raw.githubusercontent.com/socrata-cookbooks/shared/master/files/.kitchen.rb')
+%>
+<%= instance_eval(Net::HTTP.get(uri)) %>
 ```
 
 Sections of the config can be overridden by appending overrides to your `.kitchen.yml`:
 
 ```
-<% require 'net/http' %>
-<%= instance_eval(File.read('https://raw.githubusercontent.com/socrata-cookbooks/shared/master/files/.kitchen.rb')) %>
+<%
+require 'net/http'
+require 'uri'
+
+uri = URI('https://raw.githubusercontent.com/socrata-cookbooks/shared/master/files/.kitchen.rb')
+%>
+<%= instance_eval(Net::HTTP.get(uri)) %>
 
 platforms:
   - name: fakeux
