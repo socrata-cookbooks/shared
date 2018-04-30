@@ -51,6 +51,26 @@ inherit_from:
   - https://raw.githubusercontent.com/socrata-cookbooks/shared/master/files/.rubocop.yml
 ```
 
+***Test Kitchen***
+
+Test Kitchen performs Erb parsing before trying to interpret its YAML config, so the included Kitchen config can be imported by putting this in your `.kitchen.yml`:
+
+```
+<% require 'net/http' %>
+<%= instance_eval(File.read('https://raw.githubusercontent.com/socrata-cookbooks/shared/master/files/.kitchen.rb')) %>
+```
+
+Sections of the config can be overridden by appending overrides to your `.kitchen.yml`:
+
+```
+<% require 'net/http' %>
+<%= instance_eval(File.read('https://raw.githubusercontent.com/socrata-cookbooks/shared/master/files/.kitchen.rb')) %>
+
+platforms:
+  - name: fakeux
+```
+
+
 ***Documentation***
 
 Markdown has no facility to include the content of another Markdown file. The included doc files can only be referenced as follows:
