@@ -68,7 +68,7 @@ module KitchenConfigurator
   # @author Jonathan Hartman <jonathan.hartman@socrata.com>
   class Config
     def initialize(options = {})
-      options.to_h[:excluded_platforms].each do |plat|
+      options.to_h[:excluded_platforms].to_a.each do |plat|
         case plat
         when String
           platforms.delete_if { |p| p['name'] == plat }
