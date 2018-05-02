@@ -11,12 +11,9 @@ The included `Gemfile` includes gems we commonly add on top of what comes packed
 ```ruby
 # frozen_string_literal: true
 
-require 'net/http'
-require 'uri'
+require 'open-uri'
 
-uri = URI('https://raw.githubusercontent.com/socrata-cookbooks/shared/' \
-          'master/files/Gemfile')
-instance_eval(Net::HTTP.get(uri))
+instance_eval(open('https://raw.githubusercontent.com/socrata-cookbooks/shared/master/files/Gemfile').read)
 ```
 
 ***Berkshelf***
@@ -26,12 +23,9 @@ The included `Berksfile` will automatically point at the public Supermarket or o
 ```
 # frozen_string_literal: true
 
-require 'net/http'
-require 'uri'
+require 'open-uri'
 
-uri = URI('https://raw.githubusercontent.com/socrata-cookbooks/shared/' \
-          'master/files/Berksfile')
-instance_eval(Net::HTTP.get(uri))
+instance_eval(open('https://raw.githubusercontent.com/socrata-cookbooks/shared/master/files/Berksfile').read)
 ```
 
 ***Delivery***
@@ -57,27 +51,31 @@ Test Kitchen performs Erb parsing before trying to interpret its YAML config, so
 
 ```
 <%
-require 'net/http'
-require 'uri'
-
-uri = URI('https://raw.githubusercontent.com/socrata-cookbooks/shared/master/files/.kitchen.rb')
+require 'open-uri'
+eval(open('https://raw.githubusercontent.com/socrata-cookbooks/shared/master/files/.kitchen.rb').read)
 %>
-<%= instance_eval(Net::HTTP.get(uri)) %>
+<%= KitchenConfigurator::Config.new %>
 ```
 
-Sections of the config can be overridden by appending overrides to your `.kitchen.yml`:
+Specific platforms can be excluded and/or sections of the config overridden:
 
 ```
 <%
-require 'net/http'
-require 'uri'
+require 'open-uri'
+eval(open('https://raw.githubusercontent.com/socrata-cookbooks/shared/master/files/.kitchen.rb').read)
 
-uri = URI('https://raw.githubusercontent.com/socrata-cookbooks/shared/master/files/.kitchen.rb')
+kc = KitchenConfigurator::Config.new(
+  unsupported_platforms: [
+    'ubuntu-14.04-chef-14',
+    'centos-6-chef-14'
+  ]
 %>
-<%= instance_eval(Net::HTTP.get(uri)) %>
+<%= kc %>
 
-platforms:
-  - name: fakeux
+suites:
+  - name: fake
+    run_list:
+      - recipe[stuff]
 ```
 
 
