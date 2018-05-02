@@ -55,6 +55,29 @@ module KitchenConfigurator
     }
   }.freeze
 
+  PID_ONE_COMMANDS ||= {
+    'ubuntu' => {
+      '18.04' => '/lib/systemd/systemd',
+      '16.04' => '/lib/systemd/systemd',
+      '14.04' => '/sbin/init',
+    },
+    'debian' => {
+      '9' => '/lib/systemd/systemd',
+      '8' => '/lib/systemd/systemd'
+    },
+    'centos' => {
+      '7' => '/lib/systemd/systemd',
+      '6' => '/sbin/init'
+    },
+    'amazonlinux' => {
+      '2' => '/lib/systemd/systemd',
+      '1' => '/sbin/init'
+    },
+    'fedora' => {
+      '27' => '/lib/systemd/systemd'
+    }
+  }.freeze
+
   # The path to a potential data bags directory in test/fixtures/.
   DATA_BAGS_PATH ||= File.expand_path('test/fixtures/data_bags', __dir__).freeze
 
@@ -155,7 +178,8 @@ module KitchenConfigurator
           'image' => "#{name}:#{version}",
           'chef_version' => chef,
           'intermediate_instructions' =>
-            INTERMEDIATE_INSTRUCTIONS[name][version].dup
+            INTERMEDIATE_INSTRUCTIONS[name][version].dup,
+          'pid_one_command' => PID_ONE_COMMANDS[name][version]
         }
       }
     end
