@@ -188,6 +188,8 @@ module KitchenConfigurator
                                .platforms
                                .each_with_object({}) do |(name, req_str), hsh|
         next unless POTENTIAL_PLATFORMS.keys.include?(name)
+        # Amazon Linux is named "amazon" in Chef metadata but "amazonlinux" in Docker Hub.
+        name = 'amazonlinux' if name == 'amazon'
         hsh[name] = []
         req = Gem::Requirement.new(req_str)
 
