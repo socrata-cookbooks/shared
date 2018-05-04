@@ -18,7 +18,7 @@ module KitchenConfigurator
     'debian' => %w[9 8],
     'centos' => %w[7 6],
     'amazonlinux' => %w[2 1],
-    'fedora' => %w[27]
+    'fedora' => %w[28]
   }.freeze
 
   # The intermediate Docker RUN commands for each platform to make its Docker
@@ -51,7 +51,7 @@ module KitchenConfigurator
       '1' => ['RUN yum -y install upstart initscripts']
     },
     'fedora' => {
-      '27' => ['RUN dnf -y install procps']
+      '28' => ['RUN dnf -y install sudo procps']
     }
   }.freeze
 
@@ -74,7 +74,7 @@ module KitchenConfigurator
       '1' => '/sbin/init'
     },
     'fedora' => {
-      '27' => '/lib/systemd/systemd'
+      '28' => '/lib/systemd/systemd'
     }
   }.freeze
 
