@@ -6,5 +6,6 @@ end
 
 source 'https://rubygems.org'
 
+gem 'kitchen-microwave'
 gem 'rubocop', '>= 0.55'
 gem 'simplecov-console'
