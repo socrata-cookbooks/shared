@@ -30,12 +30,6 @@ Install additional gem dependencies into Chef-DK's Ruby environment:
 > chef exec bundle install
 ```
 
-Update any installed dependencies to the latest versions:
-
-```shell
-> chef exec bundle update
-```
-
 ## Local Delivery
 
 Syntax, style, and unit tests are handled by the Delivery CLI tool running in
@@ -75,16 +69,16 @@ To run all the above phases in sequence:
 
 ## Test Kitchen
 
-Integration testing is handled outside of Delivery by calling [Test Kitchen](https://kitchen.ci) directly (to make the tests more parallelizable). To run all available integration tests on all plaforms and suites:
+Integration testing is handled outside of Delivery by [Microwave](https://github.com/socrata-platform/kitchen-microwave), a wrapper around  [Test Kitchen](https://kitchen.ci). To run all available integration tests on all plaforms and suites:
 
 ```shell
-> chef exec kitchen test
+> chef exec microwave test
 ```
 
 To run tests on a single platform/suite:
 
 ```shell
-> chef exec kitchen list
+> chef exec microwave list
 Instance                       Driver  Provisioner  Verifier  Transport  Last Action    Last Error
 default-ubuntu-1804-chef-14    Dokken  Dokken       Inspec    Dokken     <Not Created>  <None>
 default-ubuntu-1604-chef-14    Dokken  Dokken       Inspec    Dokken     <Not Created>  <None>
@@ -93,5 +87,5 @@ default-ubuntu-1804-chef-13    Dokken  Dokken       Inspec    Dokken     <Not Cr
 default-ubuntu-1604-chef-13    Dokken  Dokken       Inspec    Dokken     <Not Created>  <None>
 default-amazonlinux-2-chef-13  Dokken  Dokken       Inspec    Dokken     <Not Created>  <None>
 
-> chef exec kitchen test default-ubuntu-1604-chef-14
+> chef exec microwave test default-ubuntu-1604-chef-14
 ```

@@ -13,7 +13,7 @@ Contributions can be submitted via GitHub pull requests. See [this article](http
 1. Fork the project's repo in GitHub.
 2. Create your feature branch (`git checkout -b my-new-feature`).
 3. Add code and tests for the new feature.
-4. Ensure all tests pass (`chef exec delivery local all` + `chef exec kitchen test`).
+4. Ensure all tests pass (`chef exec delivery local all` + `chef exec microwave test`).
 5. Bump the version string in `metadata.rb` in accordance with [semver](http://semver.org).
 6. Add a brief description of the change to `CHANGELOG.md`.
 7. Commit your changes (`git commit -am 'Add some feature'`).

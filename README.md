@@ -45,40 +45,6 @@ inherit_from:
   - https://raw.githubusercontent.com/socrata-cookbooks/shared/master/files/.rubocop.yml
 ```
 
-***Test Kitchen***
-
-Test Kitchen performs Erb parsing before trying to interpret its YAML config, so the included Kitchen config can be imported by putting this in your `.kitchen.yml`:
-
-```
-<%
-require 'open-uri'
-eval(open('https://raw.githubusercontent.com/socrata-cookbooks/shared/master/files/.kitchen.rb').read)
-%>
-<%= KitchenConfigurator::Config.new %>
-```
-
-Specific platforms can be excluded and/or sections of the config overridden:
-
-```
-<%
-require 'open-uri'
-eval(open('https://raw.githubusercontent.com/socrata-cookbooks/shared/master/files/.kitchen.rb').read)
-
-kc = KitchenConfigurator::Config.new(
-  unsupported_platforms: [
-    'ubuntu-14.04-chef-14',
-    'centos-6-chef-14'
-  ]
-%>
-<%= kc %>
-
-suites:
-  - name: fake
-    run_list:
-      - recipe[stuff]
-```
-
-
 ***Documentation***
 
 Markdown has no facility to include the content of another Markdown file. The included doc files can only be referenced as follows:
