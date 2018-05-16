@@ -6,6 +6,25 @@ end
 
 source 'https://rubygems.org'
 
-gem 'kitchen-microwave'
-gem 'rubocop', '>= 0.55'
-gem 'simplecov-console'
+addon_gems = {
+  'kitchen-microwave' => nil,
+  'rubocop' => '>=0.55',
+  'simplecov-console' => nil
+}
+
+chef_path = if RUBY_PLATFORM.match?(/mswin|mingw|windows/)
+              'C:\\opscode\\chefdk\\bin\\chef'
+            else
+              '/opt/chefdk/bin/chef'
+            end
+
+File.read(chef_path).lines.each do |line|
+  next unless line.strip.start_with?('gem ')
+  name, _, version = line.split('"')[1..3]
+  next if addon_gems.keys.include?(name)
+  gem name, version
+end
+
+addon_gems.each do |name, version|
+  gem name, version
+end
