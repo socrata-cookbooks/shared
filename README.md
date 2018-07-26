@@ -6,7 +6,7 @@ A set of common files that can be shared between cookbooks.
 
 ***Bundler***
 
-The included `Gemfile` includes gems we commonly add on top of what comes packed with the Chef-DK. It can be imported into a cookbook as follows:
+The included `Gemfile` includes gems we commonly add on top of what comes packed with Chef Workstation/DK. It can be imported into a cookbook as follows:
 
 ```ruby
 # frozen_string_literal: true
