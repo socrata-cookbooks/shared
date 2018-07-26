@@ -27,6 +27,7 @@ chef_path = if RUBY_PLATFORM.match?(/mswin|mingw|windows/)
 File.read(chef_path).lines.each do |line|
   next unless line.strip.start_with?('gem ')
   name, _, version = line.split('"')[1..3]
+  next if name == 'chef-dk'
   next if addon_gems.key?(name)
   gem name, version
 end
