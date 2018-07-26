@@ -4,7 +4,17 @@ This document describes the process for testing a Socrara cookbook.
 
 ## Prerequisites
 
-A working Chef Development Kit installation is required. The Chef-DK can be installed via...
+A working Chef Workstation or Chef Development Kit installation is required.
+
+Chef Workstation can be installed via...
+
+- Direct [download](https://downloads.chef.io/chef-workstation/)
+- Homebrew (`brew cask install chef-workstation`)
+- Chocolatey (`choco install chef-workstation`)
+- APT/YUM/shell script (documented [here](https://docs.chef.io/packages.html))
+- The [chef-ingredient cookbook](https://supermarket.chef.io/cookbooks/chef-ingredient)
+
+The Chef-DK can be installed via...
 
 - Direct [download](https://downloads.chef.io/chef-dk/)
 - Homebrew (`brew cask install chefdk`)
@@ -12,6 +22,7 @@ A working Chef Development Kit installation is required. The Chef-DK can be inst
 - APT/YUM/shell script (documented [here](https://docs.chef.io/packages.html))
 - The [chefdk cookbook](https://supermarket.chef.io/cookbooks/chefdk)
 - The [chef-dk cookbook](https://supermarket.chef.io/cookbooks/chef-dk)
+- The [chef-ingredient cookbook](https://supermarket.chef.io/cookbooks/chef-ingredient)
 
 The integration tests assume a running instance of Docker on the test machine. Docker can be installed via
 
@@ -24,7 +35,7 @@ The integration tests assume a running instance of Docker on the test machine. D
 
 ## Installing Dependencies
 
-Install additional gem dependencies into Chef-DK's Ruby environment:
+Install additional gem dependencies into Chef's Ruby environment:
 
 ```shell
 > chef exec bundle install
