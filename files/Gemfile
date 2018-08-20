@@ -13,7 +13,7 @@ chef_product = if paths.find { |p| p.match?(%r{/chef-workstation/bin$}) }
 source 'https://rubygems.org'
 
 addon_gems = {
-  'kitchen-microwave' => nil,
+  'kitchen-microwave' => '>= 0.3.0',
   'rubocop' => '>=0.55',
   'simplecov-console' => nil
 }
