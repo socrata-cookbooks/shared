@@ -1,6 +1,6 @@
 # Cookbook Testing
 
-This document describes the process for testing a Socrara cookbook.
+This document describes the process for testing a Socrata cookbook.
 
 ## Prerequisites
 
