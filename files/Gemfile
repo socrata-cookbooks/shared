@@ -3,8 +3,7 @@
 path_sep = RUBY_PLATFORM.match?(/mswin|mingw|windows/) ? ';' : ':'
 chef_bin = ENV['PATH'].split(path_sep).first
 
-unless chef_bin.end_with?('/chef-workstation/bin') ||
-       chef_bin.end_with?('/chefdk/bin')
+unless chef_bin.end_with?('/chef-workstation/bin', '/chefdk/bin')
   raise('This cookbook requires Chef Workstation or the Chef Development Kit')
 end
 
@@ -20,9 +19,12 @@ addon_gems = {
 
 File.read("#{chef_bin}/chef").lines.each do |line|
   next unless line.strip.start_with?('gem ')
+
   name, _, version = line.split('"')[1..3]
   next if name == 'chef-dk'
+
   next if addon_gems.key?(name)
+
   gem name, version
 end
 
