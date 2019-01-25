@@ -1,31 +1,24 @@
 # frozen_string_literal: true
 
-paths = ENV['PATH'].split(':')
-chef_product = if paths.find { |p| p.match?(%r{/chef-workstation/bin$}) }
-                 'chef-workstation'
-               elsif paths.find { |p| p.match?(%r{/chefdk/bin$}) }
-                 'chefdk'
-               else
-                 raise('This cookbook requires Chef Workstation or the Chef ' \
-                       'Development Kit')
-               end
+path_sep = RUBY_PLATFORM.match?(/mswin|mingw|windows/) ? ';' : ':'
+chef_bin = ENV['PATH'].split(path_sep).first
+
+unless chef_bin.end_with?('/chef-workstation/bin') ||
+       chef_bin.end_with?('/chefdk/bin')
+  raise('This cookbook requires Chef Workstation or the Chef Development Kit')
+end
 
 source 'https://rubygems.org'
 
 addon_gems = {
-  'chefspec' => '>= 7.3.0',
+  'chefstyle' => '>= 0.12.0',
+  'cookstyle' => '>= 4.0.0',
   'kitchen-microwave' => '>= 0.3.0',
-  'rubocop' => '>=0.55',
+  'rubocop' => '>= 0.62.0',
   'simplecov-console' => nil
 }
 
-chef_path = if RUBY_PLATFORM.match?(/mswin|mingw|windows/)
-              "C:\\opscode\\#{chef_product}\\bin\\chef"
-            else
-              "/opt/#{chef_product}/bin/chef"
-            end
-
-File.read(chef_path).lines.each do |line|
+File.read("#{chef_bin}/chef").lines.each do |line|
   next unless line.strip.start_with?('gem ')
   name, _, version = line.split('"')[1..3]
   next if name == 'chef-dk'
