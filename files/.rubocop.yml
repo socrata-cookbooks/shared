@@ -3,3 +3,5 @@ Metrics/BlockLength:
   Exclude:
     - spec/**/*
     - test/integration/**/*
+Metrics/LineLength:
+  Max: 128
