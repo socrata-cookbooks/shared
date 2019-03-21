@@ -43,15 +43,14 @@ Install additional gem dependencies into Chef's Ruby environment:
 
 ## Local Delivery
 
-Syntax, style, and unit tests are handled by the Delivery CLI tool running in
-the local delivery mode.
+Syntax, style, and unit tests are handled by the Delivery CLI tool running in the local delivery mode.
 
 ***Lint Phase***
 
 The lint phase uses [RuboCop](https://github.com/bbatsov/rubocop) to examine the cookbook's Ruby code for style violations. To run only the lint phase:
 
 ```shell
-> delivery local lint
+> chef exec delivery local lint
 ```
 
 ***Syntax Phase***
@@ -59,7 +58,7 @@ The lint phase uses [RuboCop](https://github.com/bbatsov/rubocop) to examine the
 The syntax phase uses [FoodCritic](http://www.foodcritic.io) to catch any Chef-specific cookbook issues. To run only the syntax phase:
 
 ```shell
-> delivery local syntax
+> chef exec delivery local syntax
 ```
 
 ***Unit Phase***
@@ -67,7 +66,7 @@ The syntax phase uses [FoodCritic](http://www.foodcritic.io) to catch any Chef-s
 The unit phase uses [ChefSpec](https://github.com/chefspec/chefspec) to run any unit tests present in the `spec/` directory. To run only the unit phase:
 
 ```shell
-> delivery local unit
+> chef exec delivery local unit
 ```
 
 ***All Phases***
@@ -75,7 +74,7 @@ The unit phase uses [ChefSpec](https://github.com/chefspec/chefspec) to run any 
 To run all the above phases in sequence:
 
 ```shell
-> delivery local all
+> chef exec delivery local all
 ```
 
 ## Test Kitchen
