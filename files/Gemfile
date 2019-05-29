@@ -14,6 +14,7 @@ addon_gems = {
   # and we use rules in a newer one than what ships in Chef-DK 3.
   'chefstyle' => '>= 0.12.0',
   'cookstyle' => '>= 4.0.0',
+  'rubocop' => '>= 0.62.0',
   # Microwave is a custom wrapper around Test Kitchen not distributed with
   # Chef-DK.
   'kitchen-microwave' => '>= 0.3.0',
