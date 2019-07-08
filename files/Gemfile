@@ -12,8 +12,8 @@ source 'https://rubygems.org'
 addon_gems = {
   # Chefstyle and Cookstyle are both pinned to specific versions of RuboCop
   # and we use rules in a newer one than what ships in Chef-DK 3.
-  'chefstyle' => '>= 0.12.0',
-  'cookstyle' => '>= 4.0.0',
+  'chefstyle' => '>= 0.13.0',
+  'cookstyle' => '>= 5.0.0',
   'rubocop' => nil,
   'strings' => nil,
   'unicode-display_width' => nil,
