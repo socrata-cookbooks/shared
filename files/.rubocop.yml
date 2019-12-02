@@ -1,7 +1,12 @@
 # ChefSpec and Inspec tests frequently include lengthy `describe` blocks.
 Metrics/BlockLength:
-  Exclude:
-    - spec/**/*
-    - test/integration/**/*
+  Enabled: False
+
+# Since we are completely disabling the BlockLength, cookbooks that contain a
+# rubocop directive of, `# rubocop:disable Metrics/BlockLength`, will complain
+# about unneccessary directives.
+Lint/UnneededCopDisableDirective:
+  Enabled: False
+
 Metrics/LineLength:
   Max: 128
