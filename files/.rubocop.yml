@@ -5,7 +5,7 @@ Metrics/BlockLength:
 # Since we are completely disabling the BlockLength, cookbooks that contain a
 # rubocop directive of, `# rubocop:disable Metrics/BlockLength`, will complain
 # about unneccessary directives.
-Lint/UnneededCopDisableDirective:
+Lint/RedundantCopDisableDirective:
   Enabled: False
 
 Metrics/LineLength:
