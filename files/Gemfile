@@ -21,7 +21,9 @@ addon_gems = {
   # Chef-DK.
   'kitchen-microwave' => '>= 0.3.0',
   # We use SimpleCov to check code coverage in unit tests that support it.
-  'simplecov-console' => nil
+  'simplecov-console' => nil,
+  # https://github.com/chefspec/chefspec/issues/954
+  'chefspec' => '9.1.0'
 }
 
 File.read("#{chef_bin}/chef").lines.each do |line|
