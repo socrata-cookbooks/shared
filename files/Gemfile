@@ -18,7 +18,7 @@ addon_gems = {
   'strings' => nil,
   'unicode-display_width' => nil,
   # test-kitchen is used by microwave and kitchen, newer versions don't work with ruby 2.5
-  'test-kitchen' => '< 3.1.0'
+  'test-kitchen' => '< 3.1.0',
   # Microwave is a custom wrapper around Test Kitchen not distributed with
   # Chef-DK.
   'kitchen-microwave' => '>= 0.3.0',
