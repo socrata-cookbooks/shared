@@ -13,7 +13,7 @@ The included `Gemfile` includes gems we commonly add on top of what comes packed
 
 require 'open-uri'
 
-instance_eval(open('https://raw.githubusercontent.com/socrata-cookbooks/shared/master/files/Gemfile').read)
+instance_eval(open('https://raw.githubusercontent.com/socrata-cookbooks/shared/main/files/Gemfile').read)
 ```
 
 ***Berkshelf***
@@ -25,7 +25,7 @@ The included `Berksfile` will automatically point at the public Supermarket or o
 
 require 'open-uri'
 
-instance_eval(open('https://raw.githubusercontent.com/socrata-cookbooks/shared/master/files/Berksfile').read)
+instance_eval(open('https://raw.githubusercontent.com/socrata-cookbooks/shared/main/files/Berksfile').read)
 ```
 
 ***Delivery***
@@ -33,7 +33,7 @@ instance_eval(open('https://raw.githubusercontent.com/socrata-cookbooks/shared/m
 Cookbook testing can be handled by Chef Delivery. The included config can be imported into a cookbook by adding this to its `.delivery/project.toml`:
 
 ```
-remote_file = "https://raw.githubusercontent.com/socrata-cookbooks/shared/master/files/project.toml"
+remote_file = "https://raw.githubusercontent.com/socrata-cookbooks/shared/main/files/project.toml"
 ```
 
 ***RuboCop***
@@ -42,7 +42,7 @@ The included RuboCop config can be imported into another cookbook by adding this
 
 ```
 inherit_from:
-  - https://raw.githubusercontent.com/socrata-cookbooks/shared/master/files/.rubocop.yml
+  - https://raw.githubusercontent.com/socrata-cookbooks/shared/main/files/.rubocop.yml
 ```
 
 ***Documentation***
@@ -53,17 +53,17 @@ Markdown has no facility to include the content of another Markdown file. The in
 `TESTING.md`:
 
 ```
-Please refer to the shared testing doc [here](https://github.com/socrata-cookbooks/shared/blob/master/files/TESTING.md).
+Please refer to the shared testing doc [here](https://github.com/socrata-cookbooks/shared/blob/main/files/TESTING.md).
 ```
 
 `CONTRIBUTING.md`:
 
 ```
-Please refer to the shared contributing doc [here](https://github.com/socrata-cookbooks/shared/blob/master/files/CONTRIBUTING.md).
+Please refer to the shared contributing doc [here](https://github.com/socrata-cookbooks/shared/blob/main/files/CONTRIBUTING.md).
 ```
 
 `CODE_OF_CONDUCT.md`:
 
 ```
-Please refer to the shared code of conduct [here](https://github.com/socrata-cookbooks/shared/blob/master/files/CODE_OF_CONDUCT.md).
+Please refer to the shared code of conduct [here](https://github.com/socrata-cookbooks/shared/blob/main/files/CODE_OF_CONDUCT.md).
 ```
