@@ -1,0 +1,13 @@
+name: Check that PR is not for chef18
+on:
+  pull_request:
+    branches:
+      - main
+jobs:
+  not-chef18:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - run: grep '^chef_version' metadata.rb | grep -vq ' 18'
+      - if: ${{ failure() }}
+        run: echo 'Do not make a PR to main for chef 18'

@@ -3,38 +3,24 @@
 path_sep = RUBY_PLATFORM.match?(/mswin|mingw|windows/) ? ';' : ':'
 chef_bin = ENV['PATH'].split(path_sep).first
 
-unless chef_bin.end_with?('/chef-workstation/bin', '/chefdk/bin')
-  raise('This cookbook requires Chef Workstation or the Chef Development Kit')
+unless chef_bin.end_with?('/chef-workstation/bin', '/cinc-workstation/bin')
+  raise('This cookbook requires Chef Workstation or Cinc Workstation')
 end
 
-source 'https://rubygems.org'
+source 'https://repo.socrata.com/artifactory/api/gems/rubygems-virtual'
 
 addon_gems = {
-  # Chefstyle and Cookstyle are both pinned to specific versions of RuboCop
-  # and we use rules in a newer one than what ships in Chef-DK 3.
-  'chefstyle' => '>= 0.13.0',
-  'cookstyle' => '>= 5.0.0',
-  'rubocop' => nil,
-  'strings' => nil,
-  'unicode-display_width' => nil,
-  # test-kitchen is used by microwave and kitchen, newer versions don't work with ruby 2.5
-  'test-kitchen' => '< 3.1.0',
-  # Microwave is a custom wrapper around Test Kitchen not distributed with
-  # Chef-DK.
-  'kitchen-microwave' => '>= 0.3.0',
-  # We use SimpleCov to check code coverage in unit tests that support it.
+  'cookstyle' => nil,
+  'test-kitchen' => nil,
+  'kitchen-microwave' => nil,
   'simplecov-console' => nil,
-  # https://github.com/chefspec/chefspec/issues/954
-  'chefspec' => '9.1.0'
+  'chefspec' => nil,
 }
 
 File.read("#{chef_bin}/chef").lines.each do |line|
   next unless line.strip.start_with?('gem ')
-
   name, _, version = line.split('"')[1..3]
-
   next if addon_gems.key?(name)
-
   gem name, version
 end
 
